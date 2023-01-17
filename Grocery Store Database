@@ -1,0 +1,29 @@
+CREATE TABLE nikobanks (id INTEGER PRIMARY KEY, name TEXT,price INTEGER,sold INTEGER,refunded INTEGER);
+INSERT INTO nikobanks VALUES (1,'pants',50,4,0);
+INSERT INTO nikobanks VALUES (2,'shirts',30,4,0);
+INSERT INTO nikobanks VALUES (3,'shoes',60,2,0);
+INSERT INTO nikobanks VALUES (4,'rings',100,3,0);
+INSERT INTO nikobanks VALUES (5,'computer',500,2,0);
+INSERT INTO nikobanks VALUES (6,'iphones',800,20,3);
+INSERT INTO nikobanks VALUES (7,'watches',400,400,20);
+INSERT INTO nikobanks VALUES (8,'gum',2.00,45,0);
+INSERT INTO nikobanks VALUES (9,'pokemoncards',4.18,60,0);
+INSERT INTO nikobanks VALUES (10,'printers',80,10,3);
+INSERT INTO nikobanks VALUES (11,'headphones',155,40,11);
+INSERT INTO nikobanks VALUES (12,'cameras',329.99,33,0);
+INSERT INTO nikobanks VALUES (13,'DVD',23.99,79,30);
+INSERT INTO nikobanks VALUES (14,'candles',13.25,23,0);
+INSERT INTO nikobanks VALUES (15,'hot sauce',2.12,99,0);
+
+
+SELECT* FROM nikobanks;
+
+
+-- items that have sold less then 30 units in order of price --
+SELECT *FROM nikobanks WHERE sold <30 ORDER BY price;
+
+
+
+
+-- total amout of refunds issued--
+SELECT SUM(refunded) FROM nikobanks
