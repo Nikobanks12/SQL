@@ -1,0 +1,48 @@
+CREATE TABLE Actors (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
+INSERT into Actors VALUES (1,"Christian Bale",48);
+INSERT into Actors VALUES (2,"Ana de Armas",34);
+INSERT into Actors VALUES (3,"Ryan Gosling",42);
+INSERT into Actors VALUES (4,"Willem Dafoe",67);
+INSERT into Actors VALUES (5,"Felicity Jones",39);
+INSERT into Actors VALUES (6,"Imogen Poots",33);
+
+ CREATE TABLE Movies (id INTEGER PRIMARY KEY, actor_id INTEGER,name TEXT,genre TEXT);
+ 
+INSERT into Movies VALUES (1,6,"28 Weeks later","Horror");
+INSERT into Movies VALUES (2,6,"Green Room","Thriller");
+INSERT into Movies VALUES (3,5,"Like Crazy","Romance");
+INSERT into Movies VALUES (4,5,"Rogue One","Sci-fi");
+INSERT into Movies VALUES (5,4,"At Eternity's gate","Drama");
+INSERT into Movies VALUES (6,4,"The Northman","Adventure");
+INSERT into Movies VALUES (7,3,"Drive","Action");
+INSERT into Movies VALUES (8,3,"Blade Runner 2049","Sci-fi");
+INSERT into Movies VALUES (9,2,"Knives Out","Mystery");
+INSERT into Movies VALUES (10,2,"Knock Knock","Thriller");
+INSERT into Movies VALUES (11,1,"Hostiles","Western");
+INSERT into Movies VALUES (12,1,"Out of the Furnace","Drama");
+
+
+
+--Here I am showing the actors with each genre they have done--
+SELECT A.name,M.genre
+FROM Actors A
+LEFT OUTER JOIN Movies M
+ON A.id= M.actor_id;
+
+
+
+--Here I am only showing the actors that have done Thrillers--
+SELECT A.name,M.name AS movie_name,M.genre
+FROM Actors A
+JOIN Movies M
+ON A.id = M.actor_id
+WHERE M.genre = "Thriller";
+
+
+
+--Here I am showing the data from both tables with the actors age from oldest to youngest--
+SELECT A.name,A.age,M.name,M.genre
+FROM Actors A
+LEFT OUTER JOIN Movies M
+ON A.id = M.actor_id
+ORDER BY A.age desc;
