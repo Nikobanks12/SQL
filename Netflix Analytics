@@ -1,0 +1,32 @@
+On this SQL code, I'm querying a Nexflix database
+
+
+
+
+-- Here I am showing the total number of movies in this database excluding TV shows.---
+SELECT count (*)
+FROM "CharlotteChaze/BreakIntoTech".netflix_titles_info
+WHERE type = 'Movie';
+
+--Here I am showing the most reacent data entry date.---
+SELECT MAX(date(date_added))
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+--Listing all the movies and tv shows in alphabetical order.--
+SELECT title
+FROM "CharlotteChaze/BreakIntoTech".netflix_titles_info
+ORDER BY title asc;
+
+-Here I am showing the director of the movie Bright Star.--
+SELECT director
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" people
+ON titles.show_id=people.show_id
+where titles.title='Bright Star';
+
+- Here I am showing the oldest movie in the database with the year it was released.--
+SELECT title,release_year
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type='Movie'
+ORDER BY release_year asc
+LIMIT 1;
